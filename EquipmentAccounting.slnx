@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="EquipmentAccounting.BLL/EA_BLL.csproj" />
+  <Project Path="EquipmentAccounting.DAL/EA_DAL.csproj" />
+  <Project Path="EquipmentAccounting/EquipmentAccounting.csproj" />
+</Solution>

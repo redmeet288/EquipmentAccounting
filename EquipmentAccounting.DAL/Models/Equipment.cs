@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EquipmentAccounting.DAL.Models
+namespace EA_DAL.Models
 {
     public class Equipment
     {

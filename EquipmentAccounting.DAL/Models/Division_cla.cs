@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EquipmentAccounting.DAL.Models
+namespace EA_DAL.Models
 {
-    public class Division
+    public class Division_cla
     {
         public int Id { get; set; }
         public string Name { get; set; }

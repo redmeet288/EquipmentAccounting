@@ -24,6 +24,8 @@ namespace EquipmentAccounting
         public Division()
         {
             InitializeComponent();
+            bindingSource = new BindingSource();
+            dataGridView1.DataSource = bindingSource;
         }
         private void Division_Load(object sender, EventArgs e)
         {
@@ -83,9 +85,11 @@ namespace EquipmentAccounting
             var DeviEd = new DivisionEdit();
             DeviEd.DivisionName = row["Name"].ToString();
             DeviEd.DivisionDirector = row["Director"]?.ToString();
+            DialogResult result = DeviEd.ShowDialog();
 
 
-            if (DeviEd.DialogResult == DialogResult.OK)
+
+            if (result == DialogResult.OK)
             {
                 try
                 {
@@ -104,11 +108,12 @@ namespace EquipmentAccounting
         private void btnAdd_Click(object sender, EventArgs e)
         {
             var DeviEd = new DivisionEdit();
-            if (DeviEd.DialogResult == DialogResult.OK)
+            DialogResult result = DeviEd.ShowDialog();
+            if (result == DialogResult.OK)
             {
                 try
                 {
-                    Connect.ExecuteSql($"INSERT INTO Devisions (Name, Director) VALIUES ({DeviEd.Name},{DeviEd.Director})");
+                    Connect.ExecuteSql($"INSERT INTO Divisions (Name, Director) VALUES ('{DeviEd.Name}','{DeviEd.Director}')");
                     LoadData();
                     MessageBox.Show($"Добавили {DeviEd.Name}");
                 }

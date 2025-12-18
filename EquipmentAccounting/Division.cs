@@ -36,7 +36,7 @@ namespace EquipmentAccounting
         {
             try
             {
-                string sql = "SELECT * FROM Divisions ORDER BY Name";
+                string sql = "SELECT * FROM Divisions ORDER BY Id";
                 DataTable dt = Connect.ExecuteSelect(sql);
 
                 bindingSource.DataSource = dt;
@@ -61,6 +61,7 @@ namespace EquipmentAccounting
                 try
                 {
                     int dd = Connect.ExecuteSql($"DELETE FROM Divisions WHERE Id = {ID}");
+                    LoadData();
 
                 }
                 catch (Exception r)

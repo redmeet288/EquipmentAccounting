@@ -18,12 +18,19 @@ using EA_DAL.Models;
 
 namespace EquipmentAccounting
 {
-    public partial class Division : Form
+    public partial class DivisionForm : Form
     {
         private BindingSource bindingSource;
-        public Division()
+        private readonly AllDbForItContext _db = new AllDbForItContext();
+        private Repo<Division> _division;
+
+        public DivisionForm()
         {
             InitializeComponent();
+
+            _division = new Repo<Division>(_db);
+
+
             bindingSource = new BindingSource();
             dataGridView1.DataSource = bindingSource;
         }
@@ -36,11 +43,13 @@ namespace EquipmentAccounting
         {
             try
             {
-                string sql = "SELECT * FROM Divisions ORDER BY Id";
-                DataTable dt = Connect.ExecuteSelect(sql);
+                
 
-                bindingSource.DataSource = dt;
-                lblCount.Text = $"Записей: {dt.Rows.Count}";
+                //string sql = "SELECT * FROM Divisions ORDER BY Id";
+                //DataTable dt = Connect.ExecuteSelect(sql);
+
+                bindingSource.DataSource = _division.GetAll();
+                //lblCount.Text = $"Записей: {dt.Rows.Count}";
             }
             catch (Exception ex)
             {
@@ -50,17 +59,23 @@ namespace EquipmentAccounting
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DataRowView row = (DataRowView)bindingSource.Current;
-            int ID = Convert.ToInt32(row["Id"]);
-            string name = row["Name"].ToString();
 
-            var res = MessageBox.Show($"удалить {name}?", "удалить?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var selected = (Division)dataGridView1.SelectedRows[0].DataBoundItem;
+
+
+            //DataRowView row = (DataRowView)bindingSource.Current;
+            //int ID = Convert.ToInt32(row["Id"]);
+            //string name = row["Name"].ToString();
+
+            var res = MessageBox.Show($"удалить {selected.Name}?", "удалить?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (res == DialogResult.Yes)
             {
                 try
                 {
-                    int dd = Connect.ExecuteSql($"DELETE FROM Divisions WHERE Id = {ID}");
+                    _division.Delete(selected);
+                    _division.Save();
+                    //int dd = Connect.ExecuteSql($"DELETE FROM Divisions WHERE Id = {ID}");
                     LoadData();
 
                 }
@@ -81,11 +96,19 @@ namespace EquipmentAccounting
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            DataRowView row = (DataRowView)bindingSource.Current;
-            int ID = Convert.ToInt32(row["Id"]);
+
+            var selected = (Division)dataGridView1.SelectedRows[0].DataBoundItem;
+
+
+            //DataRowView row = (DataRowView)bindingSource.Current;
+            //int ID = Convert.ToInt32(row["Id"]);
             var DeviEd = new DivisionEdit();
-            DeviEd.DivisionName = row["Name"].ToString();
-            DeviEd.DivisionDirector = row["Director"]?.ToString();
+
+            DeviEd.EditDivisionName = selected.Name;
+            DeviEd.EditDivisionDirector = selected.Director;
+
+            //DeviEd.EditDivisionName = row["Name"].ToString();
+            //DeviEd.EditDivisionDirector = row["Director"]?.ToString();
             DialogResult result = DeviEd.ShowDialog();
 
 
@@ -94,7 +117,12 @@ namespace EquipmentAccounting
             {
                 try
                 {
-                    Connect.ExecuteSql($"UPDATE Divisions SET Name = '{DeviEd.DivisionName}', Director = '{DeviEd.DivisionDirector}' WHERE Id = {ID}");
+                    selected.Name = DeviEd.EditDivisionName.Trim();
+                    selected.Director = DeviEd.EditDivisionDirector.Trim();
+
+                    _division.Update(selected);
+                    _division.Save();
+                    //Connect.ExecuteSql($"UPDATE Divisions SET Name = '{DeviEd.EditDivisionName}', Director = '{DeviEd.EditDivisionDirector}' WHERE Id = {ID}");
                     LoadData();
                     MessageBox.Show("успех", "ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -108,17 +136,26 @@ namespace EquipmentAccounting
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var DeviEd = new DivisionEdit();
-            DialogResult result = DeviEd.ShowDialog();
+            var deviEd = new DivisionEdit();
+            DialogResult result = deviEd.ShowDialog();
+
             if (result == DialogResult.OK)
             {
                 try
                 {
-                    Connect.ExecuteSql($"INSERT INTO Divisions (Name, Director) VALUES ('{DeviEd.Name}','{DeviEd.Director}')");
+                    var newDivision = new Division
+                    {
+                        Name = deviEd.EditDivisionName.Trim(),
+                        Director = deviEd.EditDivisionDirector?.Trim()
+                    };
+
+                    _division.Add(newDivision);  
+                    _division.Save();  
+
                     LoadData();
-                    MessageBox.Show($"Добавили {DeviEd.Name}");
+                    MessageBox.Show($"Добавил {deviEd.EditDivisionName}");
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show("ты опять виноват, у меня всё работает" + ex.Message);
                 }

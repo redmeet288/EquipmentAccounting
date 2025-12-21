@@ -5,7 +5,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace EquipmentAccounting
 {
-    partial class Division
+    partial class DivisionForm
     {
         private System.ComponentModel.IContainer components = null;
 

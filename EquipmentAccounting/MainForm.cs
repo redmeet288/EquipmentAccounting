@@ -63,7 +63,7 @@ namespace EquipmentAccounting
         private void подразделенияToolStripMenuItem_Click(object sender, EventArgs e)
         {
             mainPanel.Controls.Clear();
-            Division division = new Division();
+            DivisionForm division = new DivisionForm();
             division.TopLevel = false;
             division.FormBorderStyle = FormBorderStyle.None;
             division.Dock = DockStyle.Fill;
@@ -105,6 +105,11 @@ namespace EquipmentAccounting
                 //fdsfsdfsdfsd
             }
             ////остальнное
+        }
+
+        private void справочникиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

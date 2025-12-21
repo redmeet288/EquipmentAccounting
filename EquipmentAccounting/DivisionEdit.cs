@@ -17,20 +17,17 @@ namespace EquipmentAccounting
             InitializeComponent();
         }
 
-        public string DivisionName
+        public string EditDivisionName
         {
             get { return txtName.Text.Trim(); }
             set { txtName.Text = value; }
         }
 
-        public string DivisionDirector
+        public string EditDivisionDirector
         {
             get { return txtDirector.Text.Trim(); }
             set { txtDirector.Text = value; }
         }
-
-        public string Name => DivisionName;
-        public string Director => DivisionDirector;
 
         private void btnOK_Click(object sender, EventArgs e)
         {

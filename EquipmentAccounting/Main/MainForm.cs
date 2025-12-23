@@ -1,4 +1,5 @@
 using System.Windows.Forms;
+using EquipmentAccounting.Equipment;
 
 namespace EquipmentAccounting
 {
@@ -58,7 +59,7 @@ namespace EquipmentAccounting
         private void ñîòğóäíèêèToolStripMenuItem_Click(object sender, EventArgs e)
         {
             mainPanel.Controls.Clear();
-            Equi eq = new Equi();
+            Staff eq = new Staff();
             eq.TopLevel = false;
             eq.FormBorderStyle = FormBorderStyle.None;
             eq.Dock = DockStyle.Fill;
@@ -116,6 +117,17 @@ namespace EquipmentAccounting
         private void ñïğàâî÷íèêèToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void îáîğóäîâàíèåToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mainPanel.Controls.Clear();
+            EquipmentForm division = new EquipmentForm();
+            division.TopLevel = false;
+            division.FormBorderStyle = FormBorderStyle.None;
+            division.Dock = DockStyle.Fill;
+            mainPanel.Controls.Add(division);
+            division.Show();
         }
     }
 }

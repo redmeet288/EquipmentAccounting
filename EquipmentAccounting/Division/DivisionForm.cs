@@ -62,9 +62,6 @@ namespace EquipmentAccounting
             var selected = (Division)dataGridView1.SelectedRows[0].DataBoundItem;
 
 
-            //DataRowView row = (DataRowView)bindingSource.Current;
-            //int ID = Convert.ToInt32(row["Id"]);
-            //string name = row["Name"].ToString();
 
             var res = MessageBox.Show($"удалить {selected.Name}?", "удалить?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -74,7 +71,6 @@ namespace EquipmentAccounting
                 {
                     _division.Delete(selected);
                     _division.Save();
-                    //int dd = Connect.ExecuteSql($"DELETE FROM Divisions WHERE Id = {ID}");
                     LoadData();
 
                 }
@@ -99,15 +95,11 @@ namespace EquipmentAccounting
             var selected = (Division)dataGridView1.SelectedRows[0].DataBoundItem;
 
 
-            //DataRowView row = (DataRowView)bindingSource.Current;
-            //int ID = Convert.ToInt32(row["Id"]);
             var DeviEd = new DivisionEdit();
 
             DeviEd.EditDivisionName = selected.Name;
             DeviEd.EditDivisionDirector = selected.Director;
 
-            //DeviEd.EditDivisionName = row["Name"].ToString();
-            //DeviEd.EditDivisionDirector = row["Director"]?.ToString();
             DialogResult result = DeviEd.ShowDialog();
 
 
@@ -121,7 +113,6 @@ namespace EquipmentAccounting
 
                     _division.Update(selected);
                     _division.Save();
-                    //Connect.ExecuteSql($"UPDATE Divisions SET Name = '{DeviEd.EditDivisionName}', Director = '{DeviEd.EditDivisionDirector}' WHERE Id = {ID}");
                     LoadData();
                     MessageBox.Show("успех", "ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

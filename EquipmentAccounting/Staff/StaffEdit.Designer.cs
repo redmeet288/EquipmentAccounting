@@ -4,7 +4,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace EquipmentAccounting
 {
-    partial class EquiEdit
+    partial class StaffEdit
     {
         private System.ComponentModel.IContainer components = null;
 

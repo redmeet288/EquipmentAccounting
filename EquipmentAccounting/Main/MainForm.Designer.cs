@@ -110,6 +110,7 @@
             оборудованиеToolStripMenuItem.Name = "оборудованиеToolStripMenuItem";
             оборудованиеToolStripMenuItem.Size = new Size(185, 22);
             оборудованиеToolStripMenuItem.Text = "Оборудование";
+            оборудованиеToolStripMenuItem.Click += оборудованиеToolStripMenuItem_Click;
             // 
             // лицензииПОТоолStripMenuItem
             // 

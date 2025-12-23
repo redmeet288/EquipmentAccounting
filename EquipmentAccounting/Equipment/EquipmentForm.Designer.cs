@@ -1,12 +1,10 @@
-﻿using System.Drawing;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Drawing;
 using System.Windows.Forms;
-using System.Xml.Linq;
-using static Azure.Core.HttpHeader;
-using static System.Net.Mime.MediaTypeNames;
 
-namespace EquipmentAccounting
+namespace EquipmentAccounting.Equipment
 {
-    partial class Equi
+    partial class EquipmentForm
     {
         private System.ComponentModel.IContainer components = null;
 
@@ -31,11 +29,15 @@ namespace EquipmentAccounting
             btnAdd = new Button();
             panel2 = new Panel();
             dataGridView1 = new DataGridView();
-            panel3 = new Panel();
             Id = new DataGridViewTextBoxColumn();
-            ColumnFIO = new DataGridViewTextBoxColumn();
-            ColumnPosition = new DataGridViewTextBoxColumn();
-            ColumnDivisionId = new DataGridViewTextBoxColumn();
+            ColumnInventoryNumber = new DataGridViewTextBoxColumn();
+            ColumnName = new DataGridViewTextBoxColumn();
+            ColumnTypeId = new DataGridViewTextBoxColumn();
+            ColumnSerialNumber = new DataGridViewTextBoxColumn();
+            ColumnResponsibleId = new DataGridViewTextBoxColumn();
+            ColumnDate = new DataGridViewTextBoxColumn();
+            ColumnStatus = new DataGridViewTextBoxColumn();
+            panel3 = new Panel();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -56,7 +58,7 @@ namespace EquipmentAccounting
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
-            tableLayoutPanel1.Size = new Size(784, 561);
+            tableLayoutPanel1.Size = new Size(1000, 600);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // panel1
@@ -68,18 +70,17 @@ namespace EquipmentAccounting
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(778, 44);
+            panel1.Size = new Size(994, 44);
             panel1.TabIndex = 0;
             // 
             // btnRefresh
             // 
             btnRefresh.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnRefresh.Location = new Point(696, 10);
+            btnRefresh.Location = new Point(912, 10);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new Size(75, 30);
             btnRefresh.TabIndex = 3;
             btnRefresh.Text = "Обновить";
-            btnRefresh.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnRefresh.UseVisualStyleBackColor = true;
             btnRefresh.Click += btnRefresh_Click;
             // 
@@ -90,7 +91,6 @@ namespace EquipmentAccounting
             btnDelete.Size = new Size(75, 30);
             btnDelete.TabIndex = 2;
             btnDelete.Text = "Удалить";
-            btnDelete.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += btnDelete_Click;
             // 
@@ -101,7 +101,6 @@ namespace EquipmentAccounting
             btnEdit.Size = new Size(75, 30);
             btnEdit.TabIndex = 1;
             btnEdit.Text = "Изменить";
-            btnEdit.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnEdit.UseVisualStyleBackColor = true;
             btnEdit.Click += btnEdit_Click;
             // 
@@ -112,7 +111,6 @@ namespace EquipmentAccounting
             btnAdd.Size = new Size(75, 30);
             btnAdd.TabIndex = 0;
             btnAdd.Text = "Добавить";
-            btnAdd.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnAdd.UseVisualStyleBackColor = true;
             btnAdd.Click += btnAdd_Click;
             // 
@@ -122,7 +120,7 @@ namespace EquipmentAccounting
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(3, 53);
             panel2.Name = "panel2";
-            panel2.Size = new Size(778, 475);
+            panel2.Size = new Size(994, 514);
             panel2.TabIndex = 1;
             // 
             // dataGridView1
@@ -132,7 +130,7 @@ namespace EquipmentAccounting
             dataGridView1.AllowUserToOrderColumns = true;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Id, ColumnFIO, ColumnPosition, ColumnDivisionId });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Id, ColumnInventoryNumber, ColumnName, ColumnTypeId, ColumnSerialNumber, ColumnResponsibleId, ColumnDate, ColumnStatus });
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(0, 0);
             dataGridView1.MultiSelect = false;
@@ -140,65 +138,96 @@ namespace EquipmentAccounting
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(778, 475);
+            dataGridView1.Size = new Size(994, 514);
             dataGridView1.TabIndex = 0;
+            // 
+            // Id
+            // 
+            Id.DataPropertyName = "ID";
+            Id.FillWeight = 8F;
+            Id.HeaderText = "Id";
+            Id.Name = "Id";
+            Id.ReadOnly = true;
+            // 
+            // ColumnInventoryNumber
+            // 
+            ColumnInventoryNumber.DataPropertyName = "InventoryNumber";
+            ColumnInventoryNumber.FillWeight = 12F;
+            ColumnInventoryNumber.HeaderText = "Инв. номер";
+            ColumnInventoryNumber.Name = "ColumnInventoryNumber";
+            ColumnInventoryNumber.ReadOnly = true;
+            // 
+            // ColumnName
+            // 
+            ColumnName.DataPropertyName = "Name";
+            ColumnName.FillWeight = 18F;
+            ColumnName.HeaderText = "Название";
+            ColumnName.Name = "ColumnName";
+            ColumnName.ReadOnly = true;
+            // 
+            // ColumnTypeId
+            // 
+            ColumnTypeId.DataPropertyName = "TypeId";
+            ColumnTypeId.FillWeight = 10F;
+            ColumnTypeId.HeaderText = "ID Типа";
+            ColumnTypeId.Name = "ColumnTypeId";
+            ColumnTypeId.ReadOnly = true;
+            // 
+            // ColumnSerialNumber
+            // 
+            ColumnSerialNumber.DataPropertyName = "SerialNumber";
+            ColumnSerialNumber.FillWeight = 15F;
+            ColumnSerialNumber.HeaderText = "Серийный №";
+            ColumnSerialNumber.Name = "ColumnSerialNumber";
+            ColumnSerialNumber.ReadOnly = true;
+            // 
+            // ColumnResponsibleId
+            // 
+            ColumnResponsibleId.DataPropertyName = "ResponsibleStaffId";
+            ColumnResponsibleId.FillWeight = 12F;
+            ColumnResponsibleId.HeaderText = "ID Сотрудника";
+            ColumnResponsibleId.Name = "ColumnResponsibleId";
+            ColumnResponsibleId.ReadOnly = true;
+            // 
+            // ColumnDate
+            // 
+            ColumnDate.DataPropertyName = "RegistrationDate";
+            ColumnDate.FillWeight = 13F;
+            ColumnDate.HeaderText = "Дата учета";
+            ColumnDate.Name = "ColumnDate";
+            ColumnDate.ReadOnly = true;
+            // 
+            // ColumnStatus
+            // 
+            ColumnStatus.DataPropertyName = "Status";
+            ColumnStatus.FillWeight = 10F;
+            ColumnStatus.HeaderText = "Статус";
+            ColumnStatus.Name = "ColumnStatus";
+            ColumnStatus.ReadOnly = true;
             // 
             // panel3
             // 
             panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(3, 534);
+            panel3.Location = new Point(3, 573);
             panel3.Name = "panel3";
-            panel3.Size = new Size(778, 24);
+            panel3.Size = new Size(994, 24);
             panel3.TabIndex = 2;
             // 
-            // Id
-            // 
-            Id.DataPropertyName = "Id";
-            Id.FillWeight = 15F;
-            Id.HeaderText = "ID";
-            Id.Name = "Id";
-            Id.ReadOnly = true;
-            // 
-            // ColumnFIO
-            // 
-            ColumnFIO.DataPropertyName = "FIO";
-            ColumnFIO.FillWeight = 40F;
-            ColumnFIO.HeaderText = "ФИО";
-            ColumnFIO.Name = "ColumnFIO";
-            ColumnFIO.ReadOnly = true;
-            // 
-            // ColumnPosition
-            // 
-            ColumnPosition.DataPropertyName = "Post";
-            ColumnPosition.FillWeight = 25F;
-            ColumnPosition.HeaderText = "Должность";
-            ColumnPosition.Name = "ColumnPosition";
-            ColumnPosition.ReadOnly = true;
-            // 
-            // ColumnDivisionId
-            // 
-            ColumnDivisionId.DataPropertyName = "IdDivision";
-            ColumnDivisionId.FillWeight = 20F;
-            ColumnDivisionId.HeaderText = "ID Подразделения";
-            ColumnDivisionId.Name = "ColumnDivisionId";
-            ColumnDivisionId.ReadOnly = true;
-            // 
-            // Equi
+            // EquipmentForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(784, 561);
+            ClientSize = new Size(1000, 600);
             Controls.Add(tableLayoutPanel1);
-            Name = "Equi";
-            Text = "Сотрудники";
-            Load += EmployeesForm_Load;
+            Name = "EquipmentForm";
+            Text = "Оборудование";
+            Load += EquipmentForm_Load;
             tableLayoutPanel1.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
-
 
 
         #endregion
@@ -213,8 +242,12 @@ namespace EquipmentAccounting
         private DataGridView dataGridView1;
         private Panel panel3;
         private DataGridViewTextBoxColumn Id;
-        private DataGridViewTextBoxColumn ColumnFIO;
-        private DataGridViewTextBoxColumn ColumnPosition;
-        private DataGridViewTextBoxColumn ColumnDivisionId;
+        private DataGridViewTextBoxColumn ColumnInventoryNumber;
+        private DataGridViewTextBoxColumn ColumnName;
+        private DataGridViewTextBoxColumn ColumnTypeId;
+        private DataGridViewTextBoxColumn ColumnSerialNumber;
+        private DataGridViewTextBoxColumn ColumnResponsibleId;
+        private DataGridViewTextBoxColumn ColumnDate;
+        private DataGridViewTextBoxColumn ColumnStatus;
     }
 }

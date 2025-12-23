@@ -17,7 +17,7 @@ public partial class Equipment
 
     public int? ResponsibleStaffId { get; set; }
 
-    public DateOnly RegistrationDate { get; set; }
+    public DateTime RegistrationDate { get; set; }
 
     public string Status { get; set; } = null!;
 

@@ -13,15 +13,15 @@ using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace EquipmentAccounting
 {
-    public partial class Equi : Form
+    public partial class Staff : Form
     {
         private BindingSource bindingSource;
         private readonly AllDbForItContext _db = new AllDbForItContext();
-        private Repo<Staff> _staff;
-        public Equi()
+        private Repo<EA_DAL.Models.Staff> _staff;
+        public Staff()
         {
             InitializeComponent();
-            _staff = new Repo<Staff>(_db);
+            _staff = new Repo<EA_DAL.Models.Staff>(_db);
 
             bindingSource = new BindingSource();
             dataGridView1.DataSource = bindingSource;
@@ -50,7 +50,7 @@ namespace EquipmentAccounting
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var Dev = new EquiEdit();
+            var Dev = new StaffEdit();
 
             DialogResult res = Dev.ShowDialog();
 
@@ -65,7 +65,7 @@ namespace EquipmentAccounting
                         MessageBox.Show("ID Подразделения не существует!");
                         return;
                     }
-                    var d = new Staff
+                    var d = new EA_DAL.Models.Staff
                     {
                         Fio = Dev.EditStaffFio,
                         Post = Dev.EditStaffPost,
@@ -98,10 +98,10 @@ namespace EquipmentAccounting
         private void btnEdit_Click(object sender, EventArgs e)
         {
             
-            var selected = (Staff)dataGridView1.SelectedRows[0].DataBoundItem;
+            var selected = (EA_DAL.Models.Staff)dataGridView1.SelectedRows[0].DataBoundItem;
 
 
-            var Dev = new EquiEdit();
+            var Dev = new StaffEdit();
 
             Dev.EditStaffFio = selected.Fio;
             Dev.EditStaffPost = selected.Post;
@@ -135,7 +135,7 @@ namespace EquipmentAccounting
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            var selected = (Staff)dataGridView1.SelectedRows[0].DataBoundItem;
+            var selected = (EA_DAL.Models.Staff)dataGridView1.SelectedRows[0].DataBoundItem;
 
             var res = MessageBox.Show($"удалить {selected.Fio}?", "удалить?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 

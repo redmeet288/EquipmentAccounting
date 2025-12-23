@@ -11,9 +11,9 @@ using System.Xml.Linq;
 
 namespace EquipmentAccounting
 {
-    public partial class EquiEdit : Form
+    public partial class StaffEdit : Form
     {
-        public EquiEdit()
+        public StaffEdit()
         {
             InitializeComponent();
         }

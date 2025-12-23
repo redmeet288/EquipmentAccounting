@@ -40,6 +40,7 @@
             statusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             toolStripStatusLabel2 = new ToolStripStatusLabel();
+            историяToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -73,7 +74,7 @@
             // 
             // справочникиToolStripMenuItem
             // 
-            справочникиToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { подразделенияToolStripMenuItem, сотрудникиToolStripMenuItem, типыОборудованияToolStripMenuItem, toolStripSeparator1, оборудованиеToolStripMenuItem, лицензииПОТоолStripMenuItem });
+            справочникиToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { подразделенияToolStripMenuItem, сотрудникиToolStripMenuItem, типыОборудованияToolStripMenuItem, toolStripSeparator1, оборудованиеToolStripMenuItem, лицензииПОТоолStripMenuItem, историяToolStripMenuItem });
             справочникиToolStripMenuItem.Name = "справочникиToolStripMenuItem";
             справочникиToolStripMenuItem.Size = new Size(94, 20);
             справочникиToolStripMenuItem.Text = "Справочники";
@@ -149,7 +150,7 @@
             // оПрограммеToolStripMenuItem
             // 
             оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            оПрограммеToolStripMenuItem.Size = new Size(149, 22);
+            оПрограммеToolStripMenuItem.Size = new Size(180, 22);
             оПрограммеToolStripMenuItem.Text = "О программе";
             оПрограммеToolStripMenuItem.Click += оПрограммеToolStripMenuItem_Click;
             // 
@@ -221,6 +222,13 @@
             toolStripStatusLabel2.Size = new Size(177, 17);
             toolStripStatusLabel2.Text = "Пользователь: Администратор";
             // 
+            // историяToolStripMenuItem
+            // 
+            историяToolStripMenuItem.Name = "историяToolStripMenuItem";
+            историяToolStripMenuItem.Size = new Size(185, 22);
+            историяToolStripMenuItem.Text = "История";
+            историяToolStripMenuItem.Click += историяToolStripMenuItem_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -270,5 +278,6 @@
         private ToolStripStatusLabel toolStripStatusLabel1;
         private ToolStripStatusLabel toolStripStatusLabel2;
         private ImageList imageList1;
+        private ToolStripMenuItem историяToolStripMenuItem;
     }
 }

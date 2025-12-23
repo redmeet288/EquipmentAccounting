@@ -129,5 +129,16 @@ namespace EquipmentAccounting
             mainPanel.Controls.Add(division);
             division.Show();
         }
+
+        private void èñòîðèÿToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mainPanel.Controls.Clear();
+            HistoryEquiSwap division = new HistoryEquiSwap();
+            division.TopLevel = false;
+            division.FormBorderStyle = FormBorderStyle.None;
+            division.Dock = DockStyle.Fill;
+            mainPanel.Controls.Add(division);
+            division.Show();
+        }
     }
 }

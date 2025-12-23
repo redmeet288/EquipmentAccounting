@@ -99,9 +99,9 @@ public partial class AllDbForItContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PK__Staff__3214EC0728DFAA6F");
 
-            entity.Property(e => e.Id).ValueGeneratedNever();
+            //entity.Property(e => e.Id).ValueGeneratedNever();
             entity.Property(e => e.Fio).HasColumnName("FIO");
-            entity.Property(e => e.IdDivision).HasColumnName("ID_Division");
+            entity.Property(e => e.IdDivision).HasColumnName("IdDivision");
             entity.Property(e => e.Post).HasMaxLength(50);
 
             entity.HasOne(d => d.IdDivisionNavigation).WithMany(p => p.Staff)
@@ -140,7 +140,7 @@ public partial class AllDbForItContext : DbContext
 
             entity.ToTable("Types of equipment");
 
-            entity.Property(e => e.Id).ValueGeneratedNever();
+            //entity.Property(e => e.Id).ValueGeneratedNever();
             entity.Property(e => e.Name).HasMaxLength(50);
         });
 

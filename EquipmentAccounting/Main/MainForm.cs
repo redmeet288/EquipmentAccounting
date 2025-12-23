@@ -46,7 +46,13 @@ namespace EquipmentAccounting
 
         private void типыОборудованияToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            mainPanel.Controls.Clear();
+            TypesOfEquipmentForm eq = new TypesOfEquipmentForm();
+            eq.TopLevel = false;
+            eq.FormBorderStyle = FormBorderStyle.None;
+            eq.Dock = DockStyle.Fill;
+            mainPanel.Controls.Add(eq);
+            eq.Show();
         }
 
         private void сотрудникиToolStripMenuItem_Click(object sender, EventArgs e)

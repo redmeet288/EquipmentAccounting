@@ -1,11 +1,12 @@
-﻿using System.Windows.Forms;
+﻿using System.Drawing;
+using System.Windows.Forms;
 using System.Xml.Linq;
-using System.Drawing;
+using static Azure.Core.HttpHeader;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace EquipmentAccounting
 {
-    partial class DivisionForm
+    partial class Equi
     {
         private System.ComponentModel.IContainer components = null;
 
@@ -30,16 +31,15 @@ namespace EquipmentAccounting
             btnAdd = new Button();
             panel2 = new Panel();
             dataGridView1 = new DataGridView();
-            Id = new DataGridViewTextBoxColumn();
-            ColumnName = new DataGridViewTextBoxColumn();
-            ColumnDirector = new DataGridViewTextBoxColumn();
             panel3 = new Panel();
-            lblCount = new Label();
+            Id = new DataGridViewTextBoxColumn();
+            ColumnFIO = new DataGridViewTextBoxColumn();
+            ColumnPosition = new DataGridViewTextBoxColumn();
+            ColumnDivisionId = new DataGridViewTextBoxColumn();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -132,7 +132,7 @@ namespace EquipmentAccounting
             dataGridView1.AllowUserToOrderColumns = true;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Id, ColumnName, ColumnDirector });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Id, ColumnFIO, ColumnPosition, ColumnDivisionId });
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(0, 0);
             dataGridView1.MultiSelect = false;
@@ -143,65 +143,63 @@ namespace EquipmentAccounting
             dataGridView1.Size = new Size(778, 475);
             dataGridView1.TabIndex = 0;
             // 
-            // Id
-            // 
-            Id.DataPropertyName = "Id";
-            Id.FillWeight = 20F;
-            Id.HeaderText = "ID";
-            Id.Name = "Id";
-            Id.ReadOnly = true;
-            // 
-            // ColumnName
-            // 
-            ColumnName.DataPropertyName = "Name";
-            ColumnName.FillWeight = 50F;
-            ColumnName.HeaderText = "Название подразделения";
-            ColumnName.Name = "ColumnName";
-            ColumnName.ReadOnly = true;
-            // 
-            // ColumnDirector
-            // 
-            ColumnDirector.DataPropertyName = "Director";
-            ColumnDirector.FillWeight = 30F;
-            ColumnDirector.HeaderText = "Руководитель";
-            ColumnDirector.Name = "ColumnDirector";
-            ColumnDirector.ReadOnly = true;
-            // 
             // panel3
             // 
-            panel3.Controls.Add(lblCount);
             panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(3, 534);
             panel3.Name = "panel3";
             panel3.Size = new Size(778, 24);
             panel3.TabIndex = 2;
             // 
-            // lblCount
+            // Id
             // 
-            lblCount.AutoSize = true;
-            lblCount.Location = new Point(10, 5);
-            lblCount.Name = "lblCount";
-            lblCount.Size = new Size(65, 15);
-            lblCount.TabIndex = 0;
-            lblCount.Text = "Записей: 0";
+            Id.DataPropertyName = "Id";
+            Id.FillWeight = 15F;
+            Id.HeaderText = "ID";
+            Id.Name = "Id";
+            Id.ReadOnly = true;
             // 
-            // Division
+            // ColumnFIO
+            // 
+            ColumnFIO.DataPropertyName = "FIO";
+            ColumnFIO.FillWeight = 40F;
+            ColumnFIO.HeaderText = "ФИО";
+            ColumnFIO.Name = "ColumnFIO";
+            ColumnFIO.ReadOnly = true;
+            // 
+            // ColumnPosition
+            // 
+            ColumnPosition.DataPropertyName = "Post";
+            ColumnPosition.FillWeight = 25F;
+            ColumnPosition.HeaderText = "Должность";
+            ColumnPosition.Name = "ColumnPosition";
+            ColumnPosition.ReadOnly = true;
+            // 
+            // ColumnDivisionId
+            // 
+            ColumnDivisionId.DataPropertyName = "IdDivision";
+            ColumnDivisionId.FillWeight = 20F;
+            ColumnDivisionId.HeaderText = "ID Подразделения";
+            ColumnDivisionId.Name = "ColumnDivisionId";
+            ColumnDivisionId.ReadOnly = true;
+            // 
+            // Equi
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(784, 561);
             Controls.Add(tableLayoutPanel1);
-            Name = "Division";
-            Text = "Подразделения";
-            Load += Division_Load;
+            Name = "Equi";
+            Text = "Сотрудники";
+            Load += EmployeesForm_Load;
             tableLayoutPanel1.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
             ResumeLayout(false);
         }
+
+
 
         #endregion
 
@@ -214,9 +212,9 @@ namespace EquipmentAccounting
         private Panel panel2;
         private DataGridView dataGridView1;
         private Panel panel3;
-        private Label lblCount;
         private DataGridViewTextBoxColumn Id;
-        private DataGridViewTextBoxColumn ColumnName;
-        private DataGridViewTextBoxColumn ColumnDirector;
+        private DataGridViewTextBoxColumn ColumnFIO;
+        private DataGridViewTextBoxColumn ColumnPosition;
+        private DataGridViewTextBoxColumn ColumnDivisionId;
     }
 }

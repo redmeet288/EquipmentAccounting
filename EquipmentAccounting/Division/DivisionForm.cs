@@ -32,7 +32,9 @@ namespace EquipmentAccounting
 
 
             bindingSource = new BindingSource();
+
             dataGridView1.DataSource = bindingSource;
+
         }
         private void Division_Load(object sender, EventArgs e)
         {
@@ -43,13 +45,10 @@ namespace EquipmentAccounting
         {
             try
             {
-                
 
-                //string sql = "SELECT * FROM Divisions ORDER BY Id";
-                //DataTable dt = Connect.ExecuteSelect(sql);
+                dataGridView1.AutoGenerateColumns = false;
+                bindingSource.DataSource = _division.GetAll().ToList();
 
-                bindingSource.DataSource = _division.GetAll();
-                //lblCount.Text = $"Записей: {dt.Rows.Count}";
             }
             catch (Exception ex)
             {

@@ -2,4 +2,5 @@
   <Project Path="EquipmentAccounting.BLL/EA_BLL.csproj" />
   <Project Path="EquipmentAccounting.DAL/EA_DAL.csproj" />
   <Project Path="EquipmentAccounting/EquipmentAccounting.csproj" />
+  <Project Path="TestProject1/TestProject1.csproj" Id="322f02bb-98b3-4fb7-97ff-ce96bf82ec11" />
 </Solution>

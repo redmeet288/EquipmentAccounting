@@ -9,7 +9,7 @@ public partial class InstalledSoftware
 
     public int LicenseId { get; set; }
 
-    public DateOnly InstallationDate { get; set; }
+    public DateTime InstallationDate { get; set; }
 
     public virtual Equipment Equipment { get; set; } = null!;
 

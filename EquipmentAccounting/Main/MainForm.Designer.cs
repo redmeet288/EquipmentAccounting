@@ -21,6 +21,8 @@
             menuStrip1 = new MenuStrip();
             файлToolStripMenuItem = new ToolStripMenuItem();
             выходToolStripMenuItem = new ToolStripMenuItem();
+            вашIDToolStripMenuItem = new ToolStripMenuItem();
+            toolStripTextBox1 = new ToolStripTextBox();
             справочникиToolStripMenuItem = new ToolStripMenuItem();
             подразделенияToolStripMenuItem = new ToolStripMenuItem();
             сотрудникиToolStripMenuItem = new ToolStripMenuItem();
@@ -28,6 +30,7 @@
             toolStripSeparator1 = new ToolStripSeparator();
             оборудованиеToolStripMenuItem = new ToolStripMenuItem();
             лицензииПОТоолStripMenuItem = new ToolStripMenuItem();
+            историяToolStripMenuItem = new ToolStripMenuItem();
             отчетыToolStripMenuItem = new ToolStripMenuItem();
             оборудованиеПоПодразделениямToolStripMenuItem = new ToolStripMenuItem();
             поНаКомпьютереСотрудникаToolStripMenuItem = new ToolStripMenuItem();
@@ -40,7 +43,6 @@
             statusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             toolStripStatusLabel2 = new ToolStripStatusLabel();
-            историяToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -60,7 +62,7 @@
             // 
             // файлToolStripMenuItem
             // 
-            файлToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { выходToolStripMenuItem });
+            файлToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { выходToolStripMenuItem, вашIDToolStripMenuItem, toolStripTextBox1 });
             файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             файлToolStripMenuItem.Size = new Size(48, 20);
             файлToolStripMenuItem.Text = "Файл";
@@ -68,9 +70,21 @@
             // выходToolStripMenuItem
             // 
             выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            выходToolStripMenuItem.Size = new Size(109, 22);
+            выходToolStripMenuItem.Size = new Size(180, 22);
             выходToolStripMenuItem.Text = "Выход";
             выходToolStripMenuItem.Click += выходToolStripMenuItem_Click;
+            // 
+            // вашIDToolStripMenuItem
+            // 
+            вашIDToolStripMenuItem.Name = "вашIDToolStripMenuItem";
+            вашIDToolStripMenuItem.Size = new Size(180, 22);
+            вашIDToolStripMenuItem.Text = "Ваш ID";
+            вашIDToolStripMenuItem.Click += вашIDToolStripMenuItem_Click;
+            // 
+            // toolStripTextBox1
+            // 
+            toolStripTextBox1.Name = "toolStripTextBox1";
+            toolStripTextBox1.Size = new Size(100, 23);
             // 
             // справочникиToolStripMenuItem
             // 
@@ -78,7 +92,6 @@
             справочникиToolStripMenuItem.Name = "справочникиToolStripMenuItem";
             справочникиToolStripMenuItem.Size = new Size(94, 20);
             справочникиToolStripMenuItem.Text = "Справочники";
-            справочникиToolStripMenuItem.Click += справочникиToolStripMenuItem_Click;
             // 
             // подразделенияToolStripMenuItem
             // 
@@ -111,13 +124,20 @@
             оборудованиеToolStripMenuItem.Name = "оборудованиеToolStripMenuItem";
             оборудованиеToolStripMenuItem.Size = new Size(185, 22);
             оборудованиеToolStripMenuItem.Text = "Оборудование";
-            оборудованиеToolStripMenuItem.Click += оборудованиеToolStripMenuItem_Click;
             // 
             // лицензииПОТоолStripMenuItem
             // 
             лицензииПОТоолStripMenuItem.Name = "лицензииПОТоолStripMenuItem";
             лицензииПОТоолStripMenuItem.Size = new Size(185, 22);
             лицензииПОТоолStripMenuItem.Text = "Лицензии ПО";
+            лицензииПОТоолStripMenuItem.Click += лицензииПОТоолStripMenuItem_Click;
+            // 
+            // историяToolStripMenuItem
+            // 
+            историяToolStripMenuItem.Name = "историяToolStripMenuItem";
+            историяToolStripMenuItem.Size = new Size(185, 22);
+            историяToolStripMenuItem.Text = "История";
+            историяToolStripMenuItem.Click += историяToolStripMenuItem_Click;
             // 
             // отчетыToolStripMenuItem
             // 
@@ -150,9 +170,8 @@
             // оПрограммеToolStripMenuItem
             // 
             оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            оПрограммеToolStripMenuItem.Size = new Size(180, 22);
+            оПрограммеToolStripMenuItem.Size = new Size(149, 22);
             оПрограммеToolStripMenuItem.Text = "О программе";
-            оПрограммеToolStripMenuItem.Click += оПрограммеToolStripMenuItem_Click;
             // 
             // splitContainer1
             // 
@@ -222,13 +241,6 @@
             toolStripStatusLabel2.Size = new Size(177, 17);
             toolStripStatusLabel2.Text = "Пользователь: Администратор";
             // 
-            // историяToolStripMenuItem
-            // 
-            историяToolStripMenuItem.Name = "историяToolStripMenuItem";
-            историяToolStripMenuItem.Size = new Size(185, 22);
-            историяToolStripMenuItem.Text = "История";
-            историяToolStripMenuItem.Click += историяToolStripMenuItem_Click;
-            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -279,5 +291,7 @@
         private ToolStripStatusLabel toolStripStatusLabel2;
         private ImageList imageList1;
         private ToolStripMenuItem историяToolStripMenuItem;
+        private ToolStripMenuItem вашIDToolStripMenuItem;
+        private ToolStripTextBox toolStripTextBox1;
     }
 }

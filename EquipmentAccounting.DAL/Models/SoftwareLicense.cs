@@ -13,7 +13,7 @@ public partial class SoftwareLicense
 
     public string LicenseKey { get; set; } = null!;
 
-    public DateOnly? ExpirationDate { get; set; }
+    public DateTime ExpirationDate { get; set; }
 
     public virtual ICollection<InstalledSoftware> InstalledSoftwares { get; set; } = new List<InstalledSoftware>();
 }
